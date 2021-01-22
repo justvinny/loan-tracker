@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LoanTracker</string>
+    <string name="title_activity_test">Test</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="hint_loan_amount">Loan amount</string>
+    <string name="hint_debtor_name">Debtor name</string>
+    <string name="desc_save_a_loan">Save a loan</string>
+</resources>
