@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class LoanRecyclerAdapter extends RecyclerView.Adapter<LoanRecyclerAdapter.ViewHolder> {
+    public static final String USER_ID = "USER_ID";
     public static final int RESULT_REQUEST = 1;
     private List<Loan> loanList = new ArrayList<>();
 
@@ -39,13 +40,14 @@ public class LoanRecyclerAdapter extends RecyclerView.Adapter<LoanRecyclerAdapte
         name.setText(loan.getName());
 
         TextView loanAmount = holder.loanAmountTxtView;
-        loanAmount.setText(String.format(Locale.getDefault(),"%.2f", loan.getAmount()));
+        loanAmount.setText(String.format(Locale.getDefault(),"Owes: $%.2f", loan.getAmount()));
 
         RelativeLayout layout = holder.layoutView;
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UpdateLoanActivity.class);
+                intent.putExtra(USER_ID, loan.getId());
                 ((Activity) view.getContext()).startActivityForResult(intent, RESULT_REQUEST);
             }
         });

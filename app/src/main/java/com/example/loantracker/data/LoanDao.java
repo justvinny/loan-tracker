@@ -21,6 +21,9 @@ public interface LoanDao {
     @Delete
     public void delete(Loan loan);
 
+    @Query("SELECT * FROM loan_table WHERE id = :searchId")
+    public Loan getLoan(int searchId);
+
     @Query("SELECT * FROM loan_table")
     public LiveData<List<Loan>> getAllLoans();
 
