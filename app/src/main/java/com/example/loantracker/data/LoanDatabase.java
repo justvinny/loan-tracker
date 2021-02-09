@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Loan.class}, version = 1, exportSchema = false)
+@Database(entities = {Loan.class, LoanHistory.class}, version = 1, exportSchema = false)
 public abstract class LoanDatabase extends RoomDatabase {
 
     private static LoanDatabase instance;
@@ -20,6 +20,7 @@ public abstract class LoanDatabase extends RoomDatabase {
     public static ExecutorService dbWriterExecutor = Executors.newFixedThreadPool(N_THREADS);
 
     public abstract LoanDao loanDao();
+    public abstract  LoanHistoryDao loanHistoryDao();
 
     public static synchronized LoanDatabase getInstance(Context context) {
         if (instance == null) {

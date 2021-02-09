@@ -5,10 +5,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.loantracker.R;
-import com.example.loantracker.data.LoanRecyclerAdapter;
+import com.example.loantracker.data.LoanAdapter;
 import com.example.loantracker.viewmodel.UpdateLoanViewModel;
 
 public class UpdateLoanActivity extends AppCompatActivity {
@@ -23,7 +22,7 @@ public class UpdateLoanActivity extends AppCompatActivity {
         updateLoanViewModel = new ViewModelProvider(this).get(UpdateLoanViewModel.class);
 
         Intent intent = getIntent();
-        int id = intent.getIntExtra(LoanRecyclerAdapter.USER_ID, 0);
+        int id = intent.getIntExtra(LoanAdapter.USER_ID, 0);
 
         String title = String.format("%s's Loan Details", updateLoanViewModel.getLoan(id).getName());
         setTitle(title);

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class LoanRecyclerAdapter extends RecyclerView.Adapter<LoanRecyclerAdapter.ViewHolder> {
+public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
     public static final String USER_ID = "USER_ID";
     public static final int RESULT_REQUEST = 1;
     private List<Loan> loanList = new ArrayList<>();

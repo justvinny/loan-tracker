@@ -2,7 +2,6 @@ package com.example.loantracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.loantracker.R;
-import com.example.loantracker.data.LoanRecyclerAdapter;
+import com.example.loantracker.data.LoanAdapter;
 import com.example.loantracker.viewmodel.LoanViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,7 +26,7 @@ public class LoanActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        LoanRecyclerAdapter adapter = new LoanRecyclerAdapter();
+        LoanAdapter adapter = new LoanAdapter();
         recyclerView.setAdapter(adapter);
 
         loanViewModel = new ViewModelProvider(this).get(LoanViewModel.class);

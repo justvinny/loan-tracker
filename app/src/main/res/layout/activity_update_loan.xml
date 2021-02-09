@@ -23,5 +23,63 @@
         app:layout_constraintTop_toBottomOf="@id/txt_header_loan_history"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@+id/edit_add_amount"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/text_add_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add Loan"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_add_amount"
+        app:layout_constraintEnd_toEndOf="@id/text_minus_amount"
+        app:layout_constraintStart_toStartOf="@id/text_minus_amount" />
+
+    <EditText
+        android:id="@+id/edit_add_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/edit_minus_amount"
+        app:layout_constraintStart_toEndOf="@id/text_add_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Enter Amount"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/text_minus_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deduct Loan"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_minus_amount"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_minus_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btn_update"
+        app:layout_constraintStart_toEndOf="@id/text_minus_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Enter Amount"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="8dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
