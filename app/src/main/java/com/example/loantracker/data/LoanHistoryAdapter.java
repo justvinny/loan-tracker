@@ -3,13 +3,19 @@ package com.example.loantracker.data;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loantracker.R;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryAdapter.ViewHolder> {
+
+    private ArrayList<LoanHistory> loanHistoryList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -22,18 +28,29 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        LoanHistory loanHistory = loanHistoryList.get(position);
+        TextView amount = holder.textLoanHistoryAmount;
+        amount.setText(String.format(Locale.getDefault(), "%.2f", loanHistory.getAmount()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return loanHistoryList.size();
+    }
+
+    public void setData(ArrayList<LoanHistory> loanHistoryList) {
+        this.loanHistoryList = loanHistoryList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        public TextView textLoanHistoryAmount;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            textLoanHistoryAmount = itemView.findViewById(R.id.text_loan_history_amount);
         }
     }
 }

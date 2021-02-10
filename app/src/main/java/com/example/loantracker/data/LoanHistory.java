@@ -12,7 +12,7 @@ public class LoanHistory {
     private int loan_id;
     private double amount;
 
-    public LoanHistory(int loan_id, int amount) {
+    public LoanHistory(int loan_id, double amount) {
         this.loan_id = loan_id;
         this.amount = amount;
     }

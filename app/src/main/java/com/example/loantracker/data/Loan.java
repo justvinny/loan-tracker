@@ -32,4 +32,12 @@ public class Loan {
     public double getAmount() {
         return amount;
     }
+
+    public void addValue(double value) {
+        amount += value;
+    }
+
+    public void minusValue(double value) {
+        amount -= value;
+    }
 }
