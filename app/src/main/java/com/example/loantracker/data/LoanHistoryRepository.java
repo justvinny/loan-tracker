@@ -19,7 +19,7 @@ public class LoanHistoryRepository {
     }
 
     public void insert(LoanHistory loanHistory) {
-        LoanDatabase.dbWriterExecutor.execute(() -> {
+        LoanDatabase.dbWriterExecutor.submit(() -> {
             loanHistoryDao.insert(loanHistory);
         });
     }

@@ -29,4 +29,7 @@ public interface LoanDao {
 
     @Query("DELETE FROM loan_table")
     public void deletaAllLoans();
+
+    @Query("SELECT * FROM loan_table ORDER BY id DESC LIMIT 1")
+    public Loan getLatestLoan();
 }

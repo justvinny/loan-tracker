@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -57,12 +58,28 @@ public class LoanRepository {
             e.printStackTrace();
         }
 
-        return castedLoan;
+        return Objects.requireNonNull(castedLoan);
     }
 
     public void deleteAllLoans() {
         LoanDatabase.dbWriterExecutor.execute(() -> {
             loanDao.deletaAllLoans();
         });
+    }
+
+    public Loan getLatestLoan() {
+        Future<Loan> latestLoan = LoanDatabase.dbWriterExecutor.submit(() -> {
+            return loanDao.getLatestLoan();
+        });
+
+        Loan castedLoan = null;
+
+        try {
+            castedLoan = latestLoan.get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return Objects.requireNonNull(castedLoan);
     }
 }

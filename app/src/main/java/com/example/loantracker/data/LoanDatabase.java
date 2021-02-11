@@ -47,9 +47,23 @@ public abstract class LoanDatabase extends RoomDatabase {
             LoanDatabase.dbWriterExecutor.execute(() -> {
                 LoanDao loanDao = instance.loanDao();
 
-                loanDao.insert(new Loan("Johnny", 2500.52));
-                loanDao.insert(new Loan("Robby", 599.00));
-                loanDao.insert(new Loan("Jenny", 3959.88));
+                Loan sample1 = new Loan("Johnny", 2500.52);
+                Loan sample2 = new Loan("Robby", 599.00);
+                Loan sample3 = new Loan("Jenny", 3959.88);
+
+                loanDao.insert(sample1);
+                loanDao.insert(sample2);
+                loanDao.insert(sample3);
+
+                LoanHistoryDao loanHistoryDao = instance.loanHistoryDao();
+
+                LoanHistory sample11 = new LoanHistory(1, sample1.getAmount());
+                LoanHistory sample12 = new LoanHistory(2, sample2.getAmount());
+                LoanHistory sample13 = new LoanHistory(3, sample3.getAmount());
+
+                loanHistoryDao.insert(sample11);
+                loanHistoryDao.insert(sample12);
+                loanHistoryDao.insert(sample13);
             });
         }
     };
