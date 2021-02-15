@@ -19,6 +19,7 @@ import com.example.loantracker.viewmodel.CreateLoanViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -73,7 +74,8 @@ public class CreateLoanActivity extends AppCompatActivity {
 
     private void createLoanHistory() {
         Loan loan = createLoanViewModel.getLatestLoan();
-        LoanHistory loanHistory = new LoanHistory(loan.getId(), loan.getAmount());
+        LoanHistory loanHistory = new LoanHistory(LoanDatabase.format.format(new Date()),
+                loan.getId(), loan.getAmount());
         createLoanViewModel.insert(loanHistory);
     }
 

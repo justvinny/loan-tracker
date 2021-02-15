@@ -14,12 +14,14 @@ import android.widget.EditText;
 import com.example.loantracker.R;
 import com.example.loantracker.data.Loan;
 import com.example.loantracker.data.LoanAdapter;
+import com.example.loantracker.data.LoanDatabase;
 import com.example.loantracker.data.LoanHistory;
 import com.example.loantracker.data.LoanHistoryAdapter;
 import com.example.loantracker.utilities.Message;
 import com.example.loantracker.viewmodel.UpdateLoanViewModel;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UpdateLoanActivity extends AppCompatActivity {
     private static final String TAG = "UpdateLoanActivity";
@@ -83,7 +85,8 @@ public class UpdateLoanActivity extends AppCompatActivity {
         }
 
         if (!addValue.isEmpty() || !minusValue.isEmpty()) {
-            LoanHistory loanHistory = new LoanHistory(id, loan.getAmount());
+            LoanHistory loanHistory = new LoanHistory(LoanDatabase.format.format(new Date()),
+                    id, loan.getAmount());
             updateLoanViewModel.insertLoanHistory(loanHistory);
             updateLoanViewModel.setLoanHistory(id);
         }
