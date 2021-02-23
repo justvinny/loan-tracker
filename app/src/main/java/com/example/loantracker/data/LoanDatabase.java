@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Loan.class, LoanHistory.class}, version = 1, exportSchema = false)
+@Database(entities = {Loan.class, LoanHistory.class}, version = 2, exportSchema = false)
 public abstract class LoanDatabase extends RoomDatabase {
 
     private static final String TAG = "LoanDatabase";
@@ -35,7 +36,7 @@ public abstract class LoanDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     LoanDatabase.class, "loan_database")
-                    .fallbackToDestructiveMigration()
+                    .addMigrations(MIGRATION_1_2)
                     .addCallback(roomCallBack)
                     .build();
         }
@@ -62,14 +63,24 @@ public abstract class LoanDatabase extends RoomDatabase {
 
                 LoanHistoryDao loanHistoryDao = instance.loanHistoryDao();
 
-                LoanHistory sample11 = new LoanHistory(format.format(new Date()), 1, sample1.getAmount());
-                LoanHistory sample12 = new LoanHistory(format.format(new Date()), 2, sample2.getAmount());
-                LoanHistory sample13 = new LoanHistory(format.format(new Date()), 3, sample3.getAmount());
+                LoanHistory sample11 = new LoanHistory(format.format(new Date()), 1, sample1.getAmount(), "Test N/A");
+                LoanHistory sample12 = new LoanHistory(format.format(new Date()), 2, sample2.getAmount(), "Test N/A");
+                LoanHistory sample13 = new LoanHistory(format.format(new Date()), 3, sample3.getAmount(), "Test N/A");
 
                 loanHistoryDao.insert(sample11);
                 loanHistoryDao.insert(sample12);
                 loanHistoryDao.insert(sample13);
             });
+        }
+    };
+
+    /*
+     * Database version 2 adds the description property in loan_history_table.
+     */
+    private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE loan_history_table ADD COLUMN description TEXT NOT NULL DEFAULT 'N/A'");
         }
     };
 }

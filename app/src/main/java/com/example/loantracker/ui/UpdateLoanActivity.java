@@ -26,7 +26,7 @@ import java.util.Date;
 public class UpdateLoanActivity extends AppCompatActivity {
     private static final String TAG = "UpdateLoanActivity";
     private UpdateLoanViewModel updateLoanViewModel;
-    private EditText editAdd, editMinus;
+    private EditText editAdd, editMinus, editDescription;
     private Button btnUpdate;
     private int id;
     Loan loan;
@@ -54,6 +54,7 @@ public class UpdateLoanActivity extends AppCompatActivity {
 
         editAdd = findViewById(R.id.edit_add_amount);
         editMinus = findViewById(R.id.edit_minus_amount);
+        editDescription = findViewById(R.id.edit_description);
 
         btnUpdate = findViewById(R.id.btn_update);
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +86,10 @@ public class UpdateLoanActivity extends AppCompatActivity {
         }
 
         if (!addValue.isEmpty() || !minusValue.isEmpty()) {
+            String description = editDescription.getText().toString();
+            String saveDescription = (description.isEmpty()) ? "N/A" : description;
             LoanHistory loanHistory = new LoanHistory(LoanDatabase.format.format(new Date()),
-                    id, loan.getAmount());
+                    id, loan.getAmount(), saveDescription);
             updateLoanViewModel.insertLoanHistory(loanHistory);
             updateLoanViewModel.setLoanHistory(id);
         }

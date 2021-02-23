@@ -9,4 +9,15 @@
     <string name="hint_loan_amount">Loan amount</string>
     <string name="hint_debtor_name">Debtor name</string>
     <string name="desc_save_a_loan">Save a loan</string>
+    <string name="bnt_update_label">Update</string>
+    <string name="edit_description_hint">Enter description (optional)</string>
+    <string name="text_description_label">Description</string>
+    <string name="edit_amount_hint">Enter Amount</string>
+    <string name="text_minus_amount_label">Deduct Loan</string>
+    <string name="text_add_amount_label">Add Loan</string>
+    <string name="text_loan_history_label">Loan History</string>
+    <string name="text_description_sample">This is a sample string ababa.</string>
+    <string name="text_date_example">1-1-2000</string>
+    <string name="text_amount_example">$1000.00</string>
+    <string name="text_loan_description_header">Transaction details:</string>
 </resources>

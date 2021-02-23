@@ -10,7 +10,7 @@
         android:id="@+id/txt_header_loan_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loan History"
+        android:text="@string/text_loan_history_label"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,14 +24,16 @@
         app:layout_constraintBottom_toTopOf="@+id/edit_add_amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_header_loan_history" />
+        app:layout_constraintTop_toBottomOf="@id/txt_header_loan_history"
+        android:background="@color/grey"
+        android:paddingBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_add_amount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Add Loan"
+        android:text="@string/text_add_amount_label"
         android:textAlignment="textEnd"
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edit_add_amount"
@@ -44,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="Enter Amount"
+        android:hint="@string/edit_amount_hint"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@id/edit_minus_amount"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Deduct Loan"
+        android:text="@string/text_minus_amount_label"
         android:textAlignment="textEnd"
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edit_minus_amount"
@@ -67,18 +69,42 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="Enter Amount"
+        android:hint="@string/edit_amount_hint"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@id/btn_update"
+        app:layout_constraintBottom_toTopOf="@id/edit_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/text_minus_amount" />
+
+    <TextView
+        android:id="@+id/text_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/text_description_label"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/edit_description"
+        app:layout_constraintEnd_toEndOf="@id/text_minus_amount"
+        app:layout_constraintStart_toStartOf="@id/text_minus_amount" />
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/edit_description_hint"
+        android:maxLength="24"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toTopOf="@id/btn_update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text_description" />
 
     <Button
         android:id="@+id/btn_update"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Update"
+        android:text="@string/bnt_update_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

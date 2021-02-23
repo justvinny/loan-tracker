@@ -29,6 +29,10 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LoanHistory loanHistory = loanHistoryList.get(position);
+
+        TextView description = holder.textLoanDescription;
+        description.setText(loanHistory.getDescription());
+
         TextView amount = holder.textLoanHistoryAmount;
         amount.setText(String.format(Locale.getDefault(), "%.2f", loanHistory.getAmount()));
 
@@ -50,12 +54,14 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryAdapter.
 
         public TextView textLoanHistoryDate;
         public TextView textLoanHistoryAmount;
+        public TextView textLoanDescription;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textLoanHistoryDate = itemView.findViewById(R.id.text_loan_history_date);
             textLoanHistoryAmount = itemView.findViewById(R.id.text_loan_history_amount);
+            textLoanDescription = itemView.findViewById(R.id.text_loan_description);
         }
     }
 }

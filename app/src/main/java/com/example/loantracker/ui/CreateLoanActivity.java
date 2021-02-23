@@ -75,7 +75,7 @@ public class CreateLoanActivity extends AppCompatActivity {
     private void createLoanHistory() {
         Loan loan = createLoanViewModel.getLatestLoan();
         LoanHistory loanHistory = new LoanHistory(LoanDatabase.format.format(new Date()),
-                loan.getId(), loan.getAmount());
+                loan.getId(), loan.getAmount(), "N/A");
         createLoanViewModel.insert(loanHistory);
     }
 

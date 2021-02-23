@@ -1,5 +1,7 @@
 package com.example.loantracker.data;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -14,10 +16,15 @@ public class LoanHistory {
     private int loan_id;
     private double amount;
 
-    public LoanHistory(String date, int loan_id, double amount) {
+    @NonNull
+    @ColumnInfo(name = "description", defaultValue = "N/A")
+    private String description;
+
+    public LoanHistory(String date, int loan_id, double amount, String description) {
         this.date = date;
         this.loan_id = loan_id;
         this.amount = amount;
+        this.description = description;
 
     }
 
@@ -39,4 +46,5 @@ public class LoanHistory {
         return amount;
     }
 
+    public String getDescription() { return description; }
 }
