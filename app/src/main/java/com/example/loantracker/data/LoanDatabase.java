@@ -36,8 +36,8 @@ public abstract class LoanDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     LoanDatabase.class, "loan_database")
-                    .addMigrations(MIGRATION_1_2)
                     .addCallback(roomCallBack)
+                    .addMigrations(MIGRATION_1_2)
                     .build();
         }
 
@@ -80,7 +80,11 @@ public abstract class LoanDatabase extends RoomDatabase {
     private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL("ALTER TABLE loan_history_table ADD COLUMN description TEXT NOT NULL DEFAULT 'N/A'");
+            if (database.getVersion() == 1) {
+                dbWriterExecutor.execute(() -> {
+                    database.execSQL("ALTER TABLE loan_history_table ADD COLUMN description TEXT NOT NULL DEFAULT 'N/A'");
+                });
+            }
         }
     };
 }
